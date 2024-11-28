@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Stratus Terraform Verified Module Storage Account Module
+# Stratus Terraform Verified Module Cognitive Deployment Module
 
 <!-- markdownlint-disable MD033 -->
 ## Requirements
