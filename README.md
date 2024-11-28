@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Stratus Terraform Verified Module Cognitive Deployment Module
+# Stratus Terraform Verified Module Search Service Module
 
 <!-- markdownlint-disable MD033 -->
 ## Requirements
@@ -12,34 +12,37 @@ The following requirements are needed by this module:
 
 The following resources are used by this module:
 
-- [azapi_resource.deployment](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/resource) (resource)
+- [azapi_resource.private_endpoint](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/resource) (resource)
+- [azapi_resource.search_service](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/resource) (resource)
+- [azapi_resource.rg](https://registry.terraform.io/providers/Azure/azapi/latest/docs/data-sources/resource) (data source)
+- [azapi_resource.vnets](https://registry.terraform.io/providers/Azure/azapi/latest/docs/data-sources/resource) (data source)
 
 <!-- markdownlint-disable MD013 -->
 ## Required Inputs
 
 The following input variables are required:
 
-### <a name="input_cognitive_account_id"></a> [cognitive\_account\_id](#input\_cognitive\_account\_id)
+### <a name="input_location"></a> [location](#input\_location)
 
-Description: ID of the parent cognitive account
-
-Type: `string`
-
-### <a name="input_cognitive_deployment_name"></a> [cognitive\_deployment\_name](#input\_cognitive\_deployment\_name)
-
-Description: Name of the cognitive deployment
+Description: Location of the search service. Defaults to resource group location.
 
 Type: `string`
 
-### <a name="input_model_name"></a> [model\_name](#input\_model\_name)
+### <a name="input_pe_subnets"></a> [pe\_subnets](#input\_pe\_subnets)
 
-Description: The name of the model
+Description: List of subnets to create private endpoints for
+
+Type: `list(string)`
+
+### <a name="input_rg_id"></a> [rg\_id](#input\_rg\_id)
+
+Description: Resource group id
 
 Type: `string`
 
-### <a name="input_model_version"></a> [model\_version](#input\_model\_version)
+### <a name="input_search_service_name"></a> [search\_service\_name](#input\_search\_service\_name)
 
-Description: The version of the model
+Description: Name of the search service
 
 Type: `string`
 
@@ -47,25 +50,33 @@ Type: `string`
 
 The following input variables are optional (have default values):
 
-### <a name="input_model_format"></a> [model\_format](#input\_model\_format)
+### <a name="input_ip_rules"></a> [ip\_rules](#input\_ip\_rules)
 
-Description: The format of the model
+Description: List of ip rules
 
-Type: `string`
+Type: `list(string)`
 
-Default: `"OpenAI"`
+Default: `[]`
 
 ### <a name="input_sku"></a> [sku](#input\_sku)
 
-Description: The SKU of the cognitive deployment
+Description: The SKU of the search service
 
 Type: `string`
 
-Default: `"Standard"`
+Default: `"basic"`
 
 ## Outputs
 
-No outputs.
+The following outputs are exported:
+
+### <a name="output_identity"></a> [identity](#output\_identity)
+
+Description: n/a
+
+### <a name="output_search_service_resource_id"></a> [search\_service\_resource\_id](#output\_search\_service\_resource\_id)
+
+Description: n/a
 
 ## Modules
 

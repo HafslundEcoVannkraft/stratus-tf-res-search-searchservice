@@ -1,31 +1,31 @@
-variable "cognitive_account_id" {
+variable "rg_id" {
   type        = string
-  description = "ID of the parent cognitive account"
+  description = "Resource group id"
 }
 
-variable "cognitive_deployment_name" {
+variable "search_service_name" {
   type        = string
-  description = "Name of the cognitive deployment"
+  description = "Name of the search service"
+}
+
+variable "location" {
+  type        = string
+  description = "Location of the search service. Defaults to resource group location."
+}
+
+variable "ip_rules" {
+  type        = list(string)
+  description = "List of ip rules"
+  default     = []
+}
+
+variable "pe_subnets" {
+  type        = list(string)
+  description = "List of subnets to create private endpoints for"
 }
 
 variable "sku" {
   type        = string
-  description = "The SKU of the cognitive deployment"
-  default     = "Standard"
-}
-
-variable "model_format" {
-  type        = string
-  description = "The format of the model"
-  default     = "OpenAI"
-}
-
-variable "model_name" {
-  type        = string
-  description = "The name of the model"
-}
-
-variable "model_version" {
-  type        = string
-  description = "The version of the model"
+  description = "The SKU of the search service"
+  default     = "basic"
 }

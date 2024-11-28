@@ -1,2 +1,2 @@
-# Stratus Terraform Verified Module Cognitive Deployment Module
+# Stratus Terraform Verified Module Search Service Module
 
