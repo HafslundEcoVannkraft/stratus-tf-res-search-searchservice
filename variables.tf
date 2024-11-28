@@ -1,32 +1,31 @@
-variable "rg_name" {
+variable "cognitive_account_id" {
   type        = string
-  description = "Resource group name"
+  description = "ID of the parent cognitive account"
 }
 
-variable "storage_account_name" {
+variable "cognitive_deployment_name" {
   type        = string
-  description = "Name of the storage account"
+  description = "Name of the cognitive deployment"
 }
 
-variable "location" {
+variable "sku" {
   type        = string
-  description = "Location of the storage account. Defaults to resource group location."
-  default     = ""
+  description = "The SKU of the cognitive deployment"
+  default     = "Standard"
 }
 
-variable "pe_subnets" {
-  type        = list(string)
-  description = "List of subnets to create private endpoints for"
+variable "model_format" {
+  type        = string
+  description = "The format of the model"
+  default     = "OpenAI"
 }
 
-variable "container_names" {
-  type        = list(string)
-  description = "List of names for containers to create"
-  default     = []
+variable "model_name" {
+  type        = string
+  description = "The name of the model"
 }
 
-variable "network_acls_bypass" {
-  type = string
-  description = "The network ACLs bypass value. Possible values are `AzureServices`, `None`, and `VirtualNetwork`."
-  default = "None"
+variable "model_version" {
+  type        = string
+  description = "The version of the model"
 }
