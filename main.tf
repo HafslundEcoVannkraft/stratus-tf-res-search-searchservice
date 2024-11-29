@@ -22,11 +22,11 @@ resource "azapi_resource" "search_service" {
       }
       hostingMode = "default"
       networkRuleSet = {
-        bypass  = "AzurePortal" #None
+        bypass  = var.network_rule_set_bypass
         ipRules = var.ip_rules
       }
       partitionCount      = 1
-      publicNetworkAccess = var.pe_subnets == [] ? "Enabled" : "Disabled"
+      publicNetworkAccess = var.pe_subnets == [] ? var.public_network_access : "Disabled"
       replicaCount        = 1
       semanticSearch      = "disabled"
     }
