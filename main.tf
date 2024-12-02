@@ -26,7 +26,7 @@ resource "azapi_resource" "search_service" {
         ipRules = var.ip_rules
       }
       partitionCount      = 1
-      publicNetworkAccess = var.pe_subnets == [] ? var.public_network_access : "Disabled"
+      publicNetworkAccess = length(var.pe_subnets) == 0 ? var.public_network_access : "Disabled"
       replicaCount        = 1
       semanticSearch      = "disabled"
     }
@@ -37,7 +37,7 @@ resource "azapi_resource" "search_service" {
 }
 
 locals {
-  pe_subnets_map = var.pe_subnets == null ? {} : {
+  pe_subnets_map = length(var.pe_subnets) == 0 ? {} : {
     for subnet_id in var.pe_subnets : subnet_id => {
       subnet_id   = subnet_id
       subnet_name = split("/", subnet_id)[10]
