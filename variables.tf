@@ -41,3 +41,9 @@ variable "network_rule_set_bypass" {
   description = "Bypass options for network rule set. Valid values are 'AzurePortal', 'AzureServices' and 'None'."
   default     = "AzurePortal"
 }
+
+variable "lifecycle_ignore_tag_changes" {
+  type        = bool
+  description = "Whether or not to ignore tag changes in the lifecycle block"
+  default     = false
+}

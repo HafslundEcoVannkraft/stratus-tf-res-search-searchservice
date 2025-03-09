@@ -7,8 +7,7 @@ resource "azapi_resource" "search_service" {
   type      = "Microsoft.Search/searchServices@2024-06-01-preview"
   parent_id = var.rg_id
   name      = var.search_service_name
-  #location  = var.location == "" ? data.azapi_resource.rg.location : var.location # couldn't make this work
-  location = var.location
+  location  = var.location
   identity {
     type         = "SystemAssigned"
     identity_ids = []
@@ -34,7 +33,12 @@ resource "azapi_resource" "search_service" {
       name = var.sku
     }
   }
+
+  lifecycle {
+    ignore_changes = var.lifecycle_ignore_tag_changes ? ["tags"] : []
+  }
 }
+
 
 locals {
   pe_subnets_map = length(var.pe_subnets) == 0 ? {} : {
