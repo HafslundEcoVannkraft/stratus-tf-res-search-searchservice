@@ -69,6 +69,6 @@ resource "azapi_resource" "search_service_ignore_tag_changes" {
   }
 
   lifecycle {
-    ignore_changes = ["tags"]
+    ignore_changes = [tags]
   }
 }
