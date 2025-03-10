@@ -19,11 +19,6 @@ variable "ip_rules" {
   default     = []
 }
 
-variable "pe_subnets" {
-  type        = list(string)
-  description = "List of subnets to create private endpoints for"
-}
-
 variable "sku" {
   type        = string
   description = "The SKU of the search service"
